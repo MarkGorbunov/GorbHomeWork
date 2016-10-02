@@ -22,19 +22,39 @@ public class calculator {
             System.out.println("division = " + division(a, b));
     }
 
-    public static double sum(double a, double b) {  //operation of summ
+    /**
+     * @param a first value
+     * @param b second value
+     * @return sum between a and b
+     */
+    public static double sum(double a, double b) {
         return (a + b);
     }
 
-    public static double difference(double a, double b) {  //operation of difference
+    /**
+     * @param a first  value
+     * @param b second value
+     * @return difference between a and b
+     */
+    public static double difference(double a, double b) {
         return (a - b);
     }
 
-    public static double multiplication(double a, double b) {  //operation of multiplication
+    /**
+     * @param a first value
+     * @param b second value
+     * @return multiplication between a and b
+     */
+    public static double multiplication(double a, double b) {
         return (a * b);
     }
 
-    public static double division(double a, double b) {  //operation of division
+    /**
+     * @param a first value
+     * @param b second value
+     * @return division between a and b
+     */
+    public static double division(double a, double b) {
         return (a / b);
     }
 
