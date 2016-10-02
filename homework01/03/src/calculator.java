@@ -23,6 +23,7 @@ public class calculator {
     }
 
     /**
+     * calculate sum of parameters
      * @param a first value
      * @param b second value
      * @return sum between a and b
@@ -32,6 +33,7 @@ public class calculator {
     }
 
     /**
+     * calculate difference of parameters
      * @param a first  value
      * @param b second value
      * @return difference between a and b
@@ -41,6 +43,7 @@ public class calculator {
     }
 
     /**
+     * calculate multiplication of parameters
      * @param a first value
      * @param b second value
      * @return multiplication between a and b
@@ -50,6 +53,7 @@ public class calculator {
     }
 
     /**
+     * calculate division of parameters
      * @param a first value
      * @param b second value
      * @return division between a and b
