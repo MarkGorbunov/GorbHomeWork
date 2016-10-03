@@ -10,8 +10,7 @@ public class Greeting {
         try {
             int i = 0;
             System.out.println("Hello " + args[i]);
-        }
-        catch(Exception ex){
+        } catch(Exception ex) {
             System.out.println("incorect input");
         }
     }
