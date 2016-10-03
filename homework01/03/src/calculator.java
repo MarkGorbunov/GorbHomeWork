@@ -1,4 +1,3 @@
-import java.util.Scanner;
 /**
  * @author Gorbunov on 02.10.2016.
  * class which conducts mathematical operations
@@ -8,18 +7,24 @@ public class calculator {
      * methods that displays all mathematicial operation
      */
     public static void main(String[] args) {
-
-        Scanner in = new Scanner(System.in);
-        double a = in.nextDouble();
-        double b = in.nextDouble();
-
-        System.out.println("Sum = " + sum(a, b));
-        System.out.println("Difference = " + difference(a, b));
-        System.out.println("multiplication = " + multiplication(a, b));
-        if (b < 0.00000001 && b > -0.00000001) { //check division by zero
-            System.out.println("division by zero is forbidden");
-        } else
-            System.out.println("division = " + division(a, b));
+        if(args.length == 2) {
+            try {
+            double a = Double.valueOf(args[0]);
+            double b = Double.valueOf(args[1]);
+            System.out.println("Sum = " + sum(a, b));
+            System.out.println("Difference = " + difference(a, b));
+            System.out.println("multiplication = " + multiplication(a, b));
+            if (Double.valueOf(division(a,b)).isInfinite()) { //check division by zero
+                System.out.println("division by zero is forbidden");
+            } else {
+                System.out.println("division = " + division(a, b));
+            }
+            } catch (Exception ex) {
+                System.out.println("input arguments must be numbers");
+            }
+        } else {
+            System.out.println("incorrect number of arguments");
+        }
     }
 
     /**
