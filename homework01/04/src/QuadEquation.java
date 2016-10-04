@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 /**
  * @author Gorbunov on 04.10.2016.
- *  Class that calculate roots of cuadratic equation
+ * Class that calculate roots of cuadratic equation
  */
 public class QuadEquation {
     /**
@@ -25,7 +25,7 @@ public class QuadEquation {
     }
 
     /**
-     *method that calculate and shows the roots of equation
+     * method that calculate and shows the roots of equation
      * @param params arguments that are substituted into the equation
      */
     public static void Roots(double[] params) {
@@ -46,8 +46,8 @@ public class QuadEquation {
     }
 
     /**
-     *method that check equation on lineatity
-     * @param params argument with X^2
+     * method that check equation on lineatity
+     * @params argument with X^2
      */
 
     public static void Linearity(double[] params) {
