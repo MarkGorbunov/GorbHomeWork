@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 /**
  * @author Gorbunov on 04.10.2016.
- * Class that calculate roots of cuadratic equation
+ *         Class that calculate roots of cuadratic equation
  */
 public class QuadEquation {
     /**
@@ -19,6 +19,7 @@ public class QuadEquation {
             }
         } catch (Exception ex) {
             System.out.println("Incorrect input values. Expected double format");
+            System.exit(0);
         }
         Linearity(parameters);
         Roots(parameters);
@@ -26,19 +27,19 @@ public class QuadEquation {
 
     /**
      * method that calculate and shows the roots of equation
+     *
      * @param params arguments that are substituted into the equation
      */
     public static void Roots(double[] params) {
         double[] result = new double[2];
-        double D;
-        D = (params[1] * params[1] - 4 * params[0] * params[2]);
-        if (D > 0) { //root with Discriminant that > 0
-            result[0] = ((-params[1] + Math.sqrt(D)) / (2 * params[0]));
-            result[1] = ((-params[1] - Math.sqrt(D)) / (2 * params[0]));
-            System.out.println("X1 = " + result[0] + " X2 = " + result[1]);
-        } else if (Double.isInfinite(1 / D)) { //root with Discriminant that = 0
-            result[0] = ((-params[1] + Math.sqrt(D)) / (2 * params[0]));
+        double discriminant = (params[1] * params[1] - 4 * params[0] * params[2]);//calculate discriminant
+        if (Double.isInfinite(1 / discriminant)) { //root with Discriminant that = 0
+            result[0] = ((-params[1] + Math.sqrt(discriminant)) / (2 * params[0]));
             System.out.println("X1 = X2 = " + result[0]);
+        } else if (discriminant > 0) { //root with Discriminant that > 0
+            result[0] = ((-params[1] + Math.sqrt(discriminant)) / (2 * params[0]));
+            result[1] = ((-params[1] - Math.sqrt(discriminant)) / (2 * params[0]));
+            System.out.println("X1 = " + result[0] + " X2 = " + result[1]);
         } else { //root with Discriminant that < 0
             System.out.println("equation have only imaginary roots");
         }
@@ -47,6 +48,7 @@ public class QuadEquation {
 
     /**
      * method that check equation on lineatity
+     *
      * @params argument with X^2
      */
 
