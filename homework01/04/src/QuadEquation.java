@@ -17,14 +17,13 @@ public class QuadEquation {
                 System.out.println("Set " + (i + 1) + " parameter");
                 parameters[i] = scanner.nextDouble();
             }
+             if (Linearity(parameters) == false) {
+                 Roots(parameters);
+             }
         } catch (Exception ex) {
             System.out.println("Incorrect input values. Expected double format");
-            System.exit(0);
         }
-        Linearity(parameters);
-        Roots(parameters);
     }
-
     /**
      * method that calculate and shows the roots of equation
      *
@@ -45,18 +44,18 @@ public class QuadEquation {
         }
 
     }
-
     /**
      * method that check equation on lineatity
      *
      * @params argument with X^2
      */
-
-    public static void Linearity(double[] params) {
+    public static boolean Linearity(double[] params) {
+        boolean linear = false;
         if (Double.isInfinite(1 / params[0])) {
             System.out.println("equation is not quadratic");
-            System.exit(0);
+            linear = true;
         }
+        return linear;
     }
 }
 
