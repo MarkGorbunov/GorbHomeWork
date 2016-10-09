@@ -11,9 +11,11 @@ public class OnlyNumerals extends Rule {
      */
     public boolean inspection(String s) {
 
-        String[] str = s.split("\\s+|\\,+");
+       String[] str = s.split("\\s+|\\,+");
         for (String i : str) {
-            if (!i.matches("^\\d+$")) {
+            if (!i.matches("^\\d?$")) {
+                return false;
+            } else if (str[0].equals("")){
                 return false;
             }
         }

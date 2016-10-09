@@ -11,8 +11,7 @@ public class FiveWords extends Rule {
      */
     public boolean inspection(String s) {
         String[] str = s.split("\\s+|\\,+");
-        int a = str.length;
-        if (a >= 5) {
+        if (str.length >= 5) {
             return true;
         }
         return false;
