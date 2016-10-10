@@ -7,7 +7,7 @@ package seven;
 public abstract class Rule {
     /**
      * method check if entered line compliance with each rule
-     * String s - entered line
+     * @param  s - entered line
      */
     public abstract boolean inspection(String s);
 

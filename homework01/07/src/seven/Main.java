@@ -1,7 +1,6 @@
 package seven;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 /**
  * Main class of application.In that class entered line and locate entry point.
@@ -13,24 +12,20 @@ public class Main {
      * this method asks for enter a line and checks it for compliance with the rules
      */
     public static void main(String[] args) {
-        try {
-            System.out.print("inter a line: ");
-            Scanner in = new Scanner(System.in);
-            String s = in.nextLine();      //intered line
-            ArrayList<Rule> rulesList = new ArrayList<>();
-            rulesList.add(new WithoutNumerals());
-            rulesList.add(new OnlyNumerals());
-            rulesList.add(new FiveWords());
-            rulesList.add(new DictionaryWords());
-            for (Rule rule : rulesList) {
-                if (rule.inspection(s)) {
-                    System.out.println(rule.getPassMessage());
-                }
-            }
-            System.out.print("Rules check finished");
-        } catch (Exception e) {
-            System.err.println(e.getMessage());
-        }
 
+        EnteredLine line = new EnteredLine();
+        String s = line.enteredLline();
+        ArrayList<Rule> rulesList = new ArrayList<>();
+        rulesList.add(new WithoutNumerals());
+        rulesList.add(new OnlyNumerals());
+        rulesList.add(new FiveWords());
+        rulesList.add(new DictionaryWords());
+        for (Rule rule : rulesList) {
+            if (rule.inspection(s)) {
+                System.out.println(rule.getPassMessage());
+            }
+        }
+        System.out.print("Rules check finished");
     }
 }
+

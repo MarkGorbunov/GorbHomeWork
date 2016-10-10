@@ -7,7 +7,8 @@ package seven;
 public class OnlyNumerals extends Rule {
     /**
      * method check if entered line compliance with this rule(contain only numerals)
-     * String s - entered line
+     * @param  s - entered line
+     * @return true if entered line have only numerals
      */
     public boolean inspection(String s) {
 
@@ -24,7 +25,7 @@ public class OnlyNumerals extends Rule {
     }
 
     /**
-     * method that return some message if enered line corresponds for this rule (contain only numerals)
+     * method that return some message if entered line corresponds for this rule (contain only numerals)
      */
     public String getPassMessage() {
         return Message.onlyNumeralsMessage;

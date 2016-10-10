@@ -2,12 +2,14 @@ package seven;
 
 /**
  * class that check intered line for contain words from dictionary and return message if it true
+ *
  * @author by Gorbunov on 09.10.2016.
  */
 public class DictionaryWords extends Rule {
     /**
      * method check if entered line compliance with this rule(contain word(s) from dictionary)
-     * String s - entered line
+     * @param s - entered line
+     * @return true if entered line have words from dictionary
      */
     private static String[] dictionary = {"door", "table", "window"};
 
@@ -24,7 +26,7 @@ public class DictionaryWords extends Rule {
     }
 
     /**
-     * method that return some message if enered line corresponds for this rule (contain word(s) from dictionary)
+     * method that return some message if entered line corresponds for this rule (contain word(s) from dictionary)
      */
     public String getPassMessage() {
         return Message.dictionarywordsmessage;

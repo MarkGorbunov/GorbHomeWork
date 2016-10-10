@@ -7,14 +7,15 @@ package seven;
 public class WithoutNumerals extends Rule {
     /**
      * method check if entered line compliance with this rule(didn't contain numerals)
-     * String s - entered line
+     * @param  s - entered line
+     * @return true if entered line have some letters
      */
     public boolean inspection(String s) {
         return s.matches("^\\D+$");
     }
 
     /**
-     * method that return some message if enered line corresponds for this rule (didn't contain numerals)
+     * method that return some message if entered line corresponds for this rule (didn't contain numerals)
      */
     public String getPassMessage() {
         return Message.withoutnumeralsmessage;
