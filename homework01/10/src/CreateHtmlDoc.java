@@ -64,7 +64,5 @@ public class CreateHtmlDoc {
         }
         html =header +html +footer;
     }
-
-
 }
 
