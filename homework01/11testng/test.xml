@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Vehicle_Suit">
+    <test name="BusTest" preserve-order="true">
+        <classes>
+            <class name="BusTest">
+                <methods>
+                    <exclude name="checNull()"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="CarTest" preserve-order="true">
+        <classes>
+            <class name="CarTest">
+                <methods>
+                    <exclude name="checNull()"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="WalkTest" preserve-order="true">
+        <classes>
+            <class name="WalkTest">
+                <methods>
+                    <exclude name="checNull()"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="BicycleTest" preserve-order="true">
+        <classes>
+            <class name="BicycleTest">
+                <methods>
+                    <exclude name="checNull()"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
