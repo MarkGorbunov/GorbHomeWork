@@ -5,14 +5,14 @@ import org.testng.annotations.Test;
 
 public class TypeCheckingTest {
 
-    //
     @DataProvider(name = "isosceles")
     public Object[][] getIsosceles() {
         return new Object[][]{
                 {2, 2, 3},
                 {3, 2, 2},
                 {2, 3, 2},
-                {Double.MAX_VALUE/2, Double.MAX_VALUE/2, Double.MAX_VALUE/3},
+                {Double.MAX_VALUE, Double.MAX_VALUE,Double.MIN_VALUE},
+                {Double.MIN_VALUE, 1,1},
         };
     }
 

@@ -1,3 +1,6 @@
+import java.math.BigDecimal;
+import java.math.MathContext;
+
 import static java.lang.Double.NEGATIVE_INFINITY;
 
 /**
@@ -14,9 +17,12 @@ public class AbilityOfExist {
      * @throws Exception auto generated exception when working with file
      */
     public void checkExist(double firstLine, double secondLine, double thirdLine) throws Exception {
-        if (!((firstLine + secondLine) > thirdLine &&
-                (firstLine + thirdLine) > secondLine &&
-                (secondLine + thirdLine) > firstLine)
+        BigDecimal first = new BigDecimal(firstLine, MathContext.DECIMAL64);
+        BigDecimal second = new BigDecimal(secondLine, MathContext.DECIMAL64);
+        BigDecimal third = new BigDecimal(thirdLine, MathContext.DECIMAL64);
+        if (!((first.add(second).compareTo(third)) == 1 &&
+                (first.add(third).compareTo(second)) == 1 &&
+                (second.add(third).compareTo(first)) == 1)
                 || !((firstLine > 0) && (secondLine > 0) && (thirdLine > 0))) {
             throw new Exception("triangle cannot exist");
         }
