@@ -1,0 +1,9 @@
++ [open "http://google.by" "50"]16802
+! ["checkLinkPresentByHref" "http://www.sitethatnotexcist.com"]79
+! ["CheckLinkPresentByName" "Menu"]214
++ ["CheckPageTitle" "Google"]91
+! ["CheckPageContains" "Belarus"]401
+Total test: 3,00
+Passed/Failed: 2/3
+Total time: 17587.0
+Average time: 5,86
