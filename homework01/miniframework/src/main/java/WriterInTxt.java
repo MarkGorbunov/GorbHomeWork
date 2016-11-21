@@ -15,15 +15,16 @@ public class WriterInTxt {
      */
     public void writeIn(String s,int failTest,int passTest,double Alltime) {
         try {
-            String pattern = "##0.00";
+            String pattern = "##0.000";
             DecimalFormat decimalFormat = new DecimalFormat(pattern);
             FileWriter writer = new FileWriter("logfile.txt", false);
             writer.write(s);
-            int sum = failTest+passTest/1000;
-            String sumBd = decimalFormat.format(sum);
-            writer.write("Total test: " + sumBd + System.getProperty("line.separator"));
+            int sum = failTest+passTest;
+            double Alltime1 = Alltime/1000;
+            String AlltimeBd = decimalFormat.format(Alltime1);
+            writer.write("Total test: " + sum + System.getProperty("line.separator"));
             writer.write("Passed/Failed: " + passTest + "/" + failTest + System.getProperty("line.separator"));
-            writer.write("Total time: " + Alltime+ System.getProperty("line.separator"));
+            writer.write("Total time: " + AlltimeBd + System.getProperty("line.separator"));
             double avr = Alltime/sum/1000;
             String avrBd = decimalFormat.format(avr);
             writer.write("Average time: " + avrBd +  System.getProperty("line.separator"));
