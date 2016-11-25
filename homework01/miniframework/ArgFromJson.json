@@ -1,0 +1,12 @@
+{
+  "open": [
+    {
+      "url": "http://google.com/",
+      "timeOut": 30
+    }
+    ],
+  "CheckLinkPresentByHref": "http://www.sitethatnotexcist.com",
+  "CheckLinkPresentByName": "Menu",
+  "CheckPageTitle": "Google",
+  "CheckPageContains": "Belarus"
+}

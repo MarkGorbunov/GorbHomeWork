@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+    <command name="open" attribute1="http://google.com" attribute2="50"/>
+    <command name="CheckLinkPresentByHref" attribute1="http://google.com"/>
+    <command name="CheckLinkPresentByName" attribute1="http://google.com"/>
+    <command name="CheckPageTitle" attribute1="Google"/>
+    <command name="CheckPageContains" attribute1="http://google.com"/>
+</data>
