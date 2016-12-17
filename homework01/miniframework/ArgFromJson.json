@@ -5,8 +5,24 @@
       "timeOut": 30
     }
     ],
-  "CheckLinkPresentByHref": "http://www.sitethatnotexcist.com",
-  "CheckLinkPresentByName": "Menu",
-  "CheckPageTitle": "Google",
-  "CheckPageContains": "Belarus"
+  "CheckLinkPresentByHref":  [
+    {
+      "CheckLinkPresentByHref": "http://www.sitethatnotexcist.com"
+    }
+  ],
+  "CheckLinkPresentByName":  [
+    {
+      "CheckLinkPresentByName": "Menu"
+    }
+  ],
+  "CheckPageTitle":  [
+    {
+      "CheckPageTitle": "Google"
+    }
+  ],
+  "CheckPageContains":  [
+    {
+      "CheckPageContains": "Belarus"
+    }
+  ]
 }
