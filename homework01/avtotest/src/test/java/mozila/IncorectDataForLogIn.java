@@ -1,27 +1,36 @@
 package mozila;
 
-import org.junit.Test;
+
 import org.openqa.selenium.By;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
+
+import static mozila.PageObject.*;
 
 /**
  * check incorrect login
  */
 public class IncorectDataForLogIn {
+
+    @BeforeMethod()
+    public void setUp(){
+        open("http://local.wordpress.dev/wp-login.php");
+    }
+
     /**
      * check incorrect login without password
      * @throws InterruptedException
      */
     @Test
     public void withoutPassWordlogIn() throws InterruptedException {
-        open("http://local.wordpress.dev/wp-login.php");
-        $(By.id("user_login")).setValue("Mark");
-        $(By.id("user_pass")).setValue("");
-        $(By.id("wp-submit")).click();
-        $(By.id("login_error")).shouldHave(text("The password field is empty."));
+        $(LOGIN).setValue("Mark");
+        $(PASSWORD).setValue("");
+        $(WP_SUBMIT).click();
+        $(LOGIN_ERROR).shouldHave(text("The password field is empty."));
     }
 
     /**
@@ -30,11 +39,10 @@ public class IncorectDataForLogIn {
      */
     @Test
     public void withIncorrectPassWordlogIn() throws InterruptedException {
-        open("http://local.wordpress.dev/wp-login.php");
-        $(By.id("user_login")).setValue("borbut");
-        $(By.id("user_pass")).setValue("qwerty");
-        $(By.id("wp-submit")).click();
-        $(By.id("login_error")).shouldHave(text("The password you entered for the username borbut is incorrect."));
+        $(LOGIN).setValue("borbut");
+        $(PASSWORD).setValue("qwerty");
+        $(WP_SUBMIT).click();
+        $(LOGIN_ERROR).shouldHave(text("The password you entered for the username borbut is incorrect."));
     }
 
     /**
@@ -43,12 +51,15 @@ public class IncorectDataForLogIn {
      */
     @Test
     public void withIncorrectNamelogIn() throws InterruptedException {
-        open("http://local.wordpress.dev/wp-login.php");
-        $(By.id("user_login")).setValue("qwerty");
-        $(By.id("user_pass")).setValue("qwerty");
-        $(By.id("wp-submit")).click();
-        $(By.id("login_error")).shouldHave(text("Invalid username. "));
+        $(LOGIN).setValue("qwerty");
+        $(PASSWORD).setValue("qwerty");
+        $(WP_SUBMIT).click();
+        $(LOGIN_ERROR).shouldHave(text("Invalid username. "));
 }
+    @AfterMethod()
+    public void tearDown(){
+        close();
+    }
 
 
 }
