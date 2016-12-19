@@ -25,7 +25,7 @@ public class WriterInTxt {
             writer.write("Total test: " + sum + System.getProperty("line.separator"));
             writer.write("Passed/Failed: " + passTest + "/" + failTest + System.getProperty("line.separator"));
             writer.write("Total time: " + AlltimeBd + System.getProperty("line.separator"));
-            double avr = Alltime/sum/1000;
+            double avr = Alltime1/sum;
             String avrBd = decimalFormat.format(avr);
             writer.write("Average time: " + avrBd +  System.getProperty("line.separator"));
 

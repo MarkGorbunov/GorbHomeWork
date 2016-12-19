@@ -1,5 +1,6 @@
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.NodeList;
@@ -17,12 +18,8 @@ import java.util.concurrent.TimeUnit;
  */
 public class FromXml {
     WebDriver driver;
-    private String inTxt = "";
-    private long AllTime;
     private long timeSpent;
-    private int failTest;
-    private int passTest;
-    private long timeOut;
+    private int timeOut;
 
     /**
      * method that fill timeSpent,failTest,pasTest information about falled or not test
@@ -34,25 +31,21 @@ public class FromXml {
         Document document = builder.parse(file);
         NodeList nodes = document.getElementsByTagName("command");
         Command command = new Command();
+        TextForOutPut textForOutPut = new TextForOutPut();
         for (int i = 0; i < nodes.getLength(); i++) {
             NamedNodeMap map = nodes.item(i).getAttributes();
             String url = map.getNamedItem("attribute1").getNodeValue();
             if (map.getNamedItem("name").getNodeValue().equals("open")) {
                 try {
-                    timeOut = Long.parseLong(map.getNamedItem("attribute2").getNodeValue());
-                    driver = new ChromeDriver();
+                    timeOut = Integer.parseInt(map.getNamedItem("attribute2").getNodeValue());
+                    driver = new FirefoxDriver();
                     driver.manage().timeouts().pageLoadTimeout(timeOut, TimeUnit.SECONDS);
                     long start = System.currentTimeMillis();
                     driver.get(url);
                     timeSpent = System.currentTimeMillis() - start;
-                    AllTime = AllTime + timeSpent;
-                    inTxt = inTxt + "+ " + "[" + "open" + " " + '"' + url + '"' + " "
-                            + '"' + timeOut + '"' + "]" + timeSpent + System.getProperty("line.separator");
-                    passTest++;
+                    textForOutPut.textForOpen(url, timeOut, timeSpent);
                 } catch (Exception e) {
-                    inTxt = inTxt + "! " + "[" + "open" + " " + '"' + url + '"' + " "
-                            + '"' + timeOut + '"' + "]" + timeSpent + System.getProperty("line.separator");
-                    failTest++;
+                    textForOutPut.textForIncorrectOpen(url, timeSpent);
                 }
             }
             if (map.getNamedItem("name").getNodeValue().equals("CheckLinkPresentByHref")) {
@@ -60,16 +53,10 @@ public class FromXml {
                 long start = System.currentTimeMillis();
                 if (command.checkLinkHref(argument, driver) == true) {
                     long timeSpent = System.currentTimeMillis() - start;
-                    inTxt = inTxt + "+ " + "[" + '"' + "CheckLinkPresentByHref" + '"' + " " +
-                            '"' + argument + '"' + "]" + timeSpent + System.getProperty("line.separator");
-                    AllTime = AllTime + timeSpent;
-                    passTest++;
+                    textForOutPut.textForByHref(argument, timeSpent);
                 } else {
                     long timeSpent = System.currentTimeMillis() - start;
-                    inTxt = inTxt + "! " + "[" + '"' + "CheckLinkPresentByHref" + '"' + " " +
-                            '"' + argument + '"' + "]" + timeSpent + System.getProperty("line.separator");
-                    AllTime = AllTime + timeSpent;
-                    failTest++;
+                    textForOutPut.textForIncorrectByHref(argument, timeSpent);
                 }
             }
             if (map.getNamedItem("name").getNodeValue().equals("CheckLinkPresentByName")) {
@@ -77,16 +64,10 @@ public class FromXml {
                 long start = System.currentTimeMillis();
                 if (command.checkLinkByName(argument, driver) == true) {
                     long timeSpent = System.currentTimeMillis() - start;
-                    inTxt = inTxt + "+ " + "[" + '"' + "CheckLinkPresentByName" + '"' + " " +
-                            '"' + argument + '"' + "]" + timeSpent + System.getProperty("line.separator");
-                    AllTime = AllTime + timeSpent;
-                    passTest++;
+                    textForOutPut.textForByName(argument, timeSpent);
                 } else {
                     long timeSpent = System.currentTimeMillis() - start;
-                    inTxt = inTxt + "! " + "[" + '"' + "CheckLinkPresentByName" + '"' + " " +
-                            '"' + argument + '"' + "]" + timeSpent + System.getProperty("line.separator");
-                    AllTime = AllTime + timeSpent;
-                    failTest++;
+                    textForOutPut.textForIncorrectByName(argument, timeSpent);
                 }
             }
             if (map.getNamedItem("name").getNodeValue().equals("CheckPageTitle")) {
@@ -94,16 +75,10 @@ public class FromXml {
                 long start = System.currentTimeMillis();
                 if (command.checkTitle(argument, driver) == true) {
                     long timeSpent = System.currentTimeMillis() - start;
-                    inTxt = inTxt + "+ " + "[" + '"' + "CheckPageTitle" + '"' + " " + '"'
-                            + argument + '"' + "]" + timeSpent + System.getProperty("line.separator");
-                    AllTime = AllTime + timeSpent;
-                    passTest++;
+                    textForOutPut.textForTitle(argument, timeSpent);
                 } else {
                     long timeSpent = System.currentTimeMillis() - start;
-                    inTxt = inTxt + "! " + "[" + '"' + "CheckPageTitle" + '"' + " " + '"'
-                            + argument + '"' + "]" + timeSpent + System.getProperty("line.separator");
-                    AllTime = AllTime + timeSpent;
-                    failTest++;
+                    textForOutPut.textForIncorrectTitle(argument, timeSpent);
                 }
             }
             if (map.getNamedItem("name").getNodeValue().equals("CheckPageContains")) {
@@ -111,54 +86,14 @@ public class FromXml {
                 long start = System.currentTimeMillis();
                 if (command.checkPageContains(argument, driver) == true) {
                     long timeSpent = System.currentTimeMillis() - start;
-                    inTxt = inTxt + "+ " + "[" + '"' + "CheckPageContains" + '"' + " " + '"'
-                            + argument + '"' + "]" + timeSpent + System.getProperty("line.separator");
-                    AllTime = AllTime + timeSpent;
-                    passTest++;
+                    textForOutPut.textForTextContain(argument, timeSpent);
                 } else {
                     long timeSpent = System.currentTimeMillis() - start;
-                    inTxt = inTxt + "! " + "[" + '"' + "CheckPageContains" + '"' + " " + '"'
-                            + argument + '"' + "]" + timeSpent + System.getProperty("line.separator");
-                    AllTime = AllTime + timeSpent;
-                    failTest++;
+                    textForOutPut.textForIncorrectTextContain(argument, timeSpent);
                 }
             }
         }
+        driver.close();
     }
 
-    /**
-     * method that return information for log file
-     *
-     * @return information for log file
-     */
-    public String getInTxt() {
-        return inTxt;
-    }
-
-    /**
-     * method that return all time spend for test
-     *
-     * @return all time spend for test
-     */
-    public double getAllTime() {
-        return AllTime;
-    }
-
-    /**
-     * method that return number of failed test
-     *
-     * @return number of fail test
-     */
-    public int getFailTest() {
-        return failTest;
-    }
-
-    /**
-     * method that return number of passed test
-     *
-     * @return number of fail test
-     */
-    public int getPassTestTest() {
-        return passTest;
-    }
 }
