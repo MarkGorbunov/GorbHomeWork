@@ -12,9 +12,6 @@ vagrant up
 
 cd..
 cd src
-cd test
-cd java
-cd mozila
 
 mvn test
 
